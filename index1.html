@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Percentage Calculator</h1>
+        
+        <!-- Basic Calculations (Always Visible) -->
+        <div class="calculator-section">
+            <h2>Basic Percentage</h2>
+            <div class="input-group">
+                <span>What is</span>
+                <input type="number" id="basicX" placeholder="X">
+                <span>% of</span>
+                <input type="number" id="basicY" placeholder="Y">
+                <span>?</span>
+            </div>
+            <button onclick="calculateBasicPercentage()">Calculate</button>
+            <div id="basicResult" class="result"></div>
+        </div>
+
+        <div class="calculator-section">
+            <h2>Finding What Percentage</h2>
+            <div class="input-group">
+                <input type="number" id="findingX" placeholder="X">
+                <span>is what percentage of</span>
+                <input type="number" id="findingY" placeholder="Y">
+                <span>?</span>
+            </div>
+            <button onclick="calculateWhatPercentage()">Calculate</button>
+            <div id="findingResult" class="result"></div>
+        </div>
+
+        <div class="calculator-section">
+            <h2>Percentage Change</h2>
+            <div class="input-group">
+                <span>From</span>
+                <input type="number" id="changeX" placeholder="Original">
+                <span>to</span>
+                <input type="number" id="changeY" placeholder="New">
+            </div>
+            <button onclick="calculatePercentageChange()">Calculate</button>
+            <div id="changeResult" class="result"></div>
+        </div>
+
+        <!-- Common Applications (Accordion) -->
+        <div class="accordion">
+            <button class="accordion-button">Common Applications ▼</button>
+            <div class="accordion-content">
+                <div class="calculator-section">
+                    <h2>Reverse Percentage</h2>
+                    <div class="input-group">
+                        <span>If</span>
+                        <input type="number" id="reverseX" placeholder="X">
+                        <span>is</span>
+                        <input type="number" id="reverseY" placeholder="Y">
+                        <span>% of a number, what's the original?</span>
+                    </div>
+                    <button onclick="calculateReversePercentage()">Calculate</button>
+                    <div id="reverseResult" class="result"></div>
+                </div>
+
+                <div class="calculator-section">
+                    <h2>Discount Calculation</h2>
+                    <div class="input-group">
+                        <span>Calculate</span>
+                        <input type="number" id="discountX" placeholder="X">
+                        <span>% discount on $</span>
+                        <input type="number" id="discountY" placeholder="Y">
+                    </div>
+                    <button onclick="calculateDiscount()">Calculate</button>
+                    <div id="discountResult" class="result"></div>
+                </div>
+
+                <div class="calculator-section">
+                    <h2>Price After Discount</h2>
+                    <div class="input-group">
+                        <span>What's final price after</span>
+                        <input type="number" id="finalDiscountX" placeholder="X">
+                        <span>% discount on $</span>
+                        <input type="number" id="finalDiscountY" placeholder="Y">
+                    </div>
+                    <button onclick="calculateFinalPrice()">Calculate</button>
+                    <div id="finalDiscountResult" class="result"></div>
+                </div>
+
+                <div class="calculator-section">
+                    <h2>Increase Calculation</h2>
+                    <div class="input-group">
+                        <span>Calculate</span>
+                        <input type="number" id="increaseX" placeholder="X">
+                        <span>% increase on</span>
+                        <input type="number" id="increaseY" placeholder="Y">
+                    </div>
+                    <button onclick="calculateIncrease()">Calculate</button>
+                    <div id="increaseResult" class="result"></div>
+                </div>
+
+                <div class="calculator-section">
+                    <h2>Amount After Increase</h2>
+                    <div class="input-group">
+                        <span>What's new amount after</span>
+                        <input type="number" id="finalIncreaseX" placeholder="X">
+                        <span>% increase on</span>
+                        <input type="number" id="finalIncreaseY" placeholder="Y">
+                    </div>
+                    <button onclick="calculateFinalIncrease()">Calculate</button>
+                    <div id="finalIncreaseResult" class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
