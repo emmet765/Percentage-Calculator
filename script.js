@@ -1,8 +1,17 @@
-function validateInputs(x, y) {
-    return !isNaN(x) && !isNaN(y) && x !== null && y !== null;
-}
+// Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionBtn = document.querySelector('.accordion-button');
+    const accordionContent = document.querySelector('.accordion-content');
+    
+    accordionBtn.addEventListener('click', function() {
+        accordionContent.classList.toggle('active');
+        accordionBtn.textContent = accordionContent.classList.contains('active') 
+            ? 'Common Applications ▼' 
+            : 'Common Applications ►';
+    });
+});
 
-// Basic Percentage
+// Calculator functions
 function calculateBasicPercentage() {
     const x = parseFloat(document.getElementById('basicX').value);
     const y = parseFloat(document.getElementById('basicY').value);
@@ -16,7 +25,6 @@ function calculateBasicPercentage() {
     document.getElementById('basicResult').innerHTML = `${x}% of ${y} is ${result}`;
 }
 
-// Finding What Percentage
 function calculateWhatPercentage() {
     const x = parseFloat(document.getElementById('findingX').value);
     const y = parseFloat(document.getElementById('findingY').value);
@@ -30,7 +38,6 @@ function calculateWhatPercentage() {
     document.getElementById('findingResult').innerHTML = `${x} is ${result}% of ${y}`;
 }
 
-// Percentage Change
 function calculatePercentageChange() {
     const original = parseFloat(document.getElementById('changeX').value);
     const newValue = parseFloat(document.getElementById('changeY').value);
@@ -45,7 +52,6 @@ function calculatePercentageChange() {
     document.getElementById('changeResult').innerHTML = `The percentage ${type} is ${Math.abs(change)}%`;
 }
 
-// Reverse Percentage
 function calculateReversePercentage() {
     const x = parseFloat(document.getElementById('reverseX').value);
     const y = parseFloat(document.getElementById('reverseY').value);
@@ -59,7 +65,6 @@ function calculateReversePercentage() {
     document.getElementById('reverseResult').innerHTML = `The original number is ${result}`;
 }
 
-// Discount Calculation
 function calculateDiscount() {
     const x = parseFloat(document.getElementById('discountX').value);
     const y = parseFloat(document.getElementById('discountY').value);
@@ -73,7 +78,6 @@ function calculateDiscount() {
     document.getElementById('discountResult').innerHTML = `The discount amount is $${result}`;
 }
 
-// Price After Discount
 function calculateFinalPrice() {
     const x = parseFloat(document.getElementById('finalDiscountX').value);
     const y = parseFloat(document.getElementById('finalDiscountY').value);
@@ -87,7 +91,6 @@ function calculateFinalPrice() {
     document.getElementById('finalDiscountResult').innerHTML = `The final price is $${result}`;
 }
 
-// Increase Calculation
 function calculateIncrease() {
     const x = parseFloat(document.getElementById('increaseX').value);
     const y = parseFloat(document.getElementById('increaseY').value);
@@ -101,7 +104,6 @@ function calculateIncrease() {
     document.getElementById('increaseResult').innerHTML = `The increase amount is ${result}`;
 }
 
-// Amount After Increase
 function calculateFinalIncrease() {
     const x = parseFloat(document.getElementById('finalIncreaseX').value);
     const y = parseFloat(document.getElementById('finalIncreaseY').value);
@@ -114,3 +116,8 @@ function calculateFinalIncrease() {
     const result = (y * (1 + x/100)).toFixed(2);
     document.getElementById('finalIncreaseResult').innerHTML = `The final amount is ${result}`;
 }
+
+function validateInputs(x, y) {
+    return !isNaN(x) && !isNaN(y) && x !== null && y !== null;
+}
+
