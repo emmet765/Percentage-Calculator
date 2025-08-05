@@ -1,3 +1,24 @@
+// Debug dark mode
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    console.log('Dark Mode Toggle:', darkModeToggle);
+    
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('change', function() {
+            console.log('Toggle Changed:', this.checked);
+            if (this.checked) {
+                console.log('Enabling dark mode');
+                document.body.classList.add('dark-mode');
+            } else {
+                console.log('Disabling dark mode');
+                document.body.classList.remove('dark-mode');
+            }
+        });
+    } else {
+        console.log('Dark Mode Toggle not found');
+    }
+});
 // Initialize dark mode and rounding preferences
 document.addEventListener('DOMContentLoaded', function() {
     // Dark Mode Toggle
@@ -210,7 +231,7 @@ function calculateReversePercentage() {
 // Discount Calculator
 function calculateDiscount() {
     const x = parseFloat(document.getElementById('discountX').value);
-    const y = parseFloat(do(document.getElementById('discountY').value);
+    const y = parseFloat(document.getElementById('discountY').value);
     
     if (!validateInputs(x, y)) {
         document.getElementById('discountResult').innerHTML = "Please enter valid numbers";
