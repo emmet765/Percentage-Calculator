@@ -120,4 +120,3 @@ function calculateFinalIncrease() {
 function validateInputs(x, y) {
     return !isNaN(x) && !isNaN(y) && x !== null && y !== null;
 }
-
