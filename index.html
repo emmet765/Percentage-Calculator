@@ -99,7 +99,102 @@
         <div class="accordion">
             <button class="accordion-button">Common Applications ▼</button>
             <div class="accordion-content">
-                <!-- [Further calculator sections will go here in next part] -->
+                <!-- Inside the accordion-content div -->
+<div class="calculator-section">
+    <h2>Reverse Percentage</h2>
+    <div class="example-box">
+        Example: If 75 is 25% of a number → Calculation: 75 ÷ (25 ÷ 100) = 300 → Answer: 300
+    </div>
+    <div class="input-group">
+        <span>If</span>
+        <input type="number" id="reverseX" placeholder="X">
+        <span>is</span>
+        <input type="number" id="reverseY" placeholder="Y">
+        <span>% of a number, what's the original?</span>
+    </div>
+    <button onclick="calculateReversePercentage()">Calculate</button>
+    <div id="reverseResult" class="result"></div>
+    <div id="reverseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="reverseChart"></canvas>
+    </div>
+</div>
+
+<div class="calculator-section">
+    <h2>Discount Calculation</h2>
+    <div class="example-box">
+        Example: Calculate 20% discount on $80 → Calculation: $80 × (20 ÷ 100) = $16 → Answer: $16 discount
+    </div>
+    <div class="input-group">
+        <span>Calculate</span>
+        <input type="number" id="discountX" placeholder="X">
+        <span>% discount on $</span>
+        <input type="number" id="discountY" placeholder="Y">
+    </div>
+    <button onclick="calculateDiscount()">Calculate</button>
+    <div id="discountResult" class="result"></div>
+    <div id="discountSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="discountChart"></canvas>
+    </div>
+</div>
+
+<div class="calculator-section">
+    <h2>Price After Discount</h2>
+    <div class="example-box">
+        Example: What's final price after 20% discount on $80? → Calculation: $80 × (1 - 20 ÷ 100) = $64 → Answer: $64
+    </div>
+    <div class="input-group">
+        <span>What's final price after</span>
+        <input type="number" id="finalDiscountX" placeholder="X">
+        <span>% discount on $</span>
+        <input type="number" id="finalDiscountY" placeholder="Y">
+    </div>
+    <button onclick="calculateFinalPrice()">Calculate</button>
+    <div id="finalDiscountResult" class="result"></div>
+    <div id="finalDiscountSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="finalDiscountChart"></canvas>
+    </div>
+</div>
+
+<div class="calculator-section">
+    <h2>Increase Calculation</h2>
+    <div class="example-box">
+        Example: Calculate 10% increase on 200 → Calculation: 200 × (10 ÷ 100) = 20 → Answer: 20 increase
+    </div>
+    <div class="input-group">
+        <span>Calculate</span>
+        <input type="number" id="increaseX" placeholder="X">
+        <span>% increase on</span>
+        <input type="number" id="increaseY" placeholder="Y">
+    </div>
+    <button onclick="calculateIncrease()">Calculate</button>
+    <div id="increaseResult" class="result"></div>
+    <div id="increaseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="increaseChart"></canvas>
+    </div>
+</div>
+
+<div class="calculator-section">
+    <h2>Amount After Increase</h2>
+    <div class="example-box">
+        Example: What's the new amount after 10% increase on 200? → Calculation: 200 × (1 + 10 ÷ 100) = 220 → Answer: 220
+    </div>
+    <div class="input-group">
+        <span>What's the new amount after</span>
+        <input type="number" id="finalIncreaseX" placeholder="X">
+        <span>% increase on</span>
+        <input type="number" id="finalIncreaseY" placeholder="Y">
+    </div>
+    <button onclick="calculateFinalIncrease()">Calculate</button>
+    <div id="finalIncreaseResult" class="result"></div>
+    <div id="finalIncreaseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="finalIncreaseChart"></canvas>
+    </div>
+</div>
             </div>
         </div>
     </div>
