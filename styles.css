@@ -188,7 +188,7 @@ body.dark-mode {
 }
 
 body.dark-mode h1 {
-    color: #fff;  /* Add this new style here */
+    color: #fff !important;  /* Added !important to ensure it overrides */
 }
 
 body.dark-mode .calculator-container {
