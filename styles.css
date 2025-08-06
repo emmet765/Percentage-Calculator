@@ -162,7 +162,8 @@ button:hover {
 /* Chart Container */
 .chart-container {
     margin-top: 20px;
-    max-width: 300px;
+    max-width: 200px;  /* Reduced to 200px */
+    height: 200px;    /* Added height control */
     margin-left: auto;
     margin-right: auto;
 }
