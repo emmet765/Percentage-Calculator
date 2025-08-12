@@ -100,27 +100,38 @@ input:checked + .slider:before {
 /* Calculator Sections */
 .calculator-section {
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 25px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input-group {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
+.input-group label {
+    min-width: 120px;
+    font-size: 16px;
+    color: #333;
+}
+
 input {
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: 120px;
-    font-size: 14px;
+    width: 180px;
+    font-size: 16px;
     transition: border-color 0.3s;
+    height: 40px;
+    box-sizing: border-box;
 }
 
 input:focus {
@@ -135,9 +146,11 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 14px;
+    width: auto;
+    min-width: 120px;
+    font-size: 16px;
     transition: background-color 0.3s;
+    height: 40px;
 }
 
 button:hover {
@@ -162,8 +175,8 @@ button:hover {
 /* Chart Container */
 .chart-container {
     margin-top: 20px;
-    max-width: 200px;  /* Reduced to 200px */
-    height: 200px;    /* Added height control */
+    max-width: 200px;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -189,7 +202,7 @@ body.dark-mode {
 }
 
 body.dark-mode h1 {
-    color: #fff !important;  /* Added !important to ensure it overrides */
+    color: #fff !important;
 }
 
 body.dark-mode .calculator-container {
@@ -223,7 +236,6 @@ body.dark-mode .controls {
     background-color: #3d3d3d;
 }
 
-/* Add these new styles here */
 body.dark-mode button {
     background-color: #3498db;
 }
@@ -258,6 +270,12 @@ body.dark-mode .chart-container canvas {
 
     input {
         width: 100%;
+        height: 40px;
+    }
+
+    .input-group label {
+        width: 100%;
+        margin-bottom: 5px;
     }
 
     .example-box {
