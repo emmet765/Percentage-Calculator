@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Percentage Calculator</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Add Chart.js for pie charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -14,16 +13,14 @@
 
         <!-- Controls Section -->
         <div class="controls">
-            <!-- Dark Mode Toggle -->
             <div class="mode-toggle">
                 <label class="switch">
                     <input type="checkbox" id="darkModeToggle">
                     <span class="slider round"></span>
                 </label>
-                <span class="mode-label">Dark Mode</span>
+                   <span class="mode-label">Dark Mode</span>
             </div>
 
-            <!-- Rounding Options -->
             <div class="rounding-control">
                 <label for="roundingSelect">Decimal Places: </label>
                 <select id="roundingSelect">
@@ -36,24 +33,22 @@
             </div>
         </div>
 
-        <!-- Basic Calculations (Always Visible) -->
+        <!-- Basic Calculations -->
         <div class="calculator-section">
             <h2>Basic Percentage</h2>
             <div class="example-box">
                 Example: What is 25% of 200? → Calculation: (25 ÷ 100) × 200 = 50 → Answer: 50
             </div>
-            <div class="input-group">
+            <div class="calculation-line">
                 <span>What is</span>
                 <input type="number" id="basicX" placeholder="X">
                 <span>% of</span>
                 <input type="number" id="basicY" placeholder="Y">
-                <span>?</span>
-            </div>
-            <button onclick="calculateBasicPercentage()">Calculate</button>
-            <div id="basicResult" class="result"></div>
-            <div id="basicSteps" class="steps"></div>
-            <div class="chart-container">
-                <canvas id="basicChart"></canvas>
+                <button onclick="calculateBasicPercentage()">Calculate</button>
+                <div id="basicResult" class="result"></div>
+                <div class="chart-container">
+                    <canvas id="basicChart"></canvas>
+                </div>
             </div>
         </div>
 
@@ -62,17 +57,15 @@
             <div class="example-box">
                 Example: 80 is what percentage of 400? → Calculation: (80 ÷ 400) × 100 = 20 → Answer: 20%
             </div>
-            <div class="input-group">
+            <div class="calculation-line">
                 <input type="number" id="findingX" placeholder="X">
                 <span>is what percentage of</span>
                 <input type="number" id="findingY" placeholder="Y">
-                <span>?</span>
-            </div>
-            <button onclick="calculateWhatPercentage()">Calculate</button>
-            <div id="findingResult" class="result"></div>
-            <div id="findingSteps" class="steps"></div>
-            <div class="chart-container">
-                <canvas id="findingChart"></canvas>
+                <button onclick="calculateWhatPercentage()">Calculate</button>
+                <div id="findingResult" class="result"></div>
+                <div class="chart-container">
+                    <canvas id="findingChart"></canvas>
+                </div>
             </div>
         </div>
 
@@ -81,120 +74,16 @@
             <div class="example-box">
                 Example: From 100 to 150 → Calculation: ((150 - 100) ÷ 100) × 100 = 50 → Answer: 50% increase
             </div>
-            <div class="input-group">
+            <div class="calculation-line">
                 <span>From</span>
                 <input type="number" id="changeX" placeholder="Original">
                 <span>to</span>
                 <input type="number" id="changeY" placeholder="New">
-            </div>
-            <button onclick="calculatePercentageChange()">Calculate</button>
-            <div id="changeResult" class="result"></div>
-            <div id="changeSteps" class="steps"></div>
-            <div class="chart-container">
-                <canvas id="changeChart"></canvas>
-            </div>
-        </div>
-
-        <!-- Common Applications (Accordion) -->
-        <div class="accordion">
-            <button class="accordion-button">Common Applications ▼</button>
-            <div class="accordion-content">
-                <!-- Inside the accordion-content div -->
-<div class="calculator-section">
-    <h2>Reverse Percentage</h2>
-    <div class="example-box">
-        Example: If 75 is 25% of a number → Calculation: 75 ÷ (25 ÷ 100) = 300 → Answer: 300
-    </div>
-    <div class="input-group">
-        <span>If</span>
-        <input type="number" id="reverseX" placeholder="X">
-        <span>is</span>
-        <input type="number" id="reverseY" placeholder="Y">
-        <span>% of a number, what's the original?</span>
-    </div>
-    <button onclick="calculateReversePercentage()">Calculate</button>
-    <div id="reverseResult" class="result"></div>
-    <div id="reverseSteps" class="steps"></div>
-    <div class="chart-container">
-        <canvas id="reverseChart"></canvas>
-    </div>
-</div>
-
-<div class="calculator-section">
-    <h2>Discount Calculation</h2>
-    <div class="example-box">
-        Example: Calculate 20% discount on $80 → Calculation: $80 × (20 ÷ 100) = $16 → Answer: $16 discount
-    </div>
-    <div class="input-group">
-        <span>Calculate</span>
-        <input type="number" id="discountX" placeholder="X">
-        <span>% discount on $</span>
-        <input type="number" id="discountY" placeholder="Y">
-    </div>
-    <button onclick="calculateDiscount()">Calculate</button>
-    <div id="discountResult" class="result"></div>
-    <div id="discountSteps" class="steps"></div>
-    <div class="chart-container">
-        <canvas id="discountChart"></canvas>
-    </div>
-</div>
-
-<div class="calculator-section">
-    <h2>Price After Discount</h2>
-    <div class="example-box">
-        Example: What's final price after 20% discount on $80? → Calculation: $80 × (1 - 20 ÷ 100) = $64 → Answer: $64
-    </div>
-    <div class="input-group">
-        <span>What's final price after</span>
-        <input type="number" id="finalDiscountX" placeholder="X">
-        <span>% discount on $</span>
-        <input type="number" id="finalDiscountY" placeholder="Y">
-    </div>
-    <button onclick="calculateFinalPrice()">Calculate</button>
-    <div id="finalDiscountResult" class="result"></div>
-    <div id="finalDiscountSteps" class="steps"></div>
-    <div class="chart-container">
-        <canvas id="finalDiscountChart"></canvas>
-    </div>
-</div>
-
-<div class="calculator-section">
-    <h2>Increase Calculation</h2>
-    <div class="example-box">
-        Example: Calculate 10% increase on 200 → Calculation: 200 × (10 ÷ 100) = 20 → Answer: 20 increase
-    </div>
-    <div class="input-group">
-        <span>Calculate</span>
-        <input type="number" id="increaseX" placeholder="X">
-        <span>% increase on</span>
-        <input type="number" id="increaseY" placeholder="Y">
-    </div>
-    <button onclick="calculateIncrease()">Calculate</button>
-    <div id="increaseResult" class="result"></div>
-    <div id="increaseSteps" class="steps"></div>
-    <div class="chart-container">
-        <canvas id="increaseChart"></canvas>
-    </div>
-</div>
-
-<div class="calculator-section">
-    <h2>Amount After Increase</h2>
-    <div class="example-box">
-        Example: What's the new amount after 10% increase on 200? → Calculation: 200 × (1 + 10 ÷ 100) = 220 → Answer: 220
-    </div>
-    <div class="input-group">
-        <span>What's the new amount after</span>
-        <input type="number" id="finalIncreaseX" placeholder="X">
-        <span>% increase on</span>
-        <input type="number" id="finalIncreaseY" placeholder="Y">
-    </div>
-    <button onclick="calculateFinalIncrease()">Calculate</button>
-    <div id="finalIncreaseResult" class="result"></div>
-    <div id="finalIncreaseSteps" class="steps"></div>
-    <div class="chart-container">
-        <canvas id="finalIncreaseChart"></canvas>
-    </div>
-</div>
+                <button onclick="calculatePercentageChange()">Calculate</button>
+                <div id="changeResult" class="result"></div>
+                <div class="chart-container">
+                    <canvas id="changeChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
