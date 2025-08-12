@@ -1,289 +1,203 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f0f0f0;
-    transition: background-color 0.3s;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Chart.js for pie charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Percentage Calculator</h1>
 
-.calculator-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        <!-- Controls Section -->
+        <div class="controls">
+            <!-- Dark Mode Toggle -->
+            <div class="mode-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="mode-label">Dark Mode</span>
+            </div>
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
+            <!-- Rounding Options -->
+            <div class="rounding-control">
+                <label for="roundingSelect">Decimal Places: </label>
+                <select id="roundingSelect">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
 
-/* Controls Section */
-.controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+        <!-- Basic Calculations (Always Visible) -->
+        <div class="calculator-section">
+            <h2>Basic Percentage</h2>
+            <div class="example-box">
+                Example: What is 25% of 200? → Calculation: (25 ÷ 100) × 200 = 50 → Answer: 50
+            </div>
+            <div class="input-group">
+                <span>What is</span>
+                <input type="number" id="basicX" placeholder="X">
+                <span>% of</span>
+                <input type="number" id="basicY" placeholder="Y">
+                <span>?</span>
+            </div>
+            <button onclick="calculateBasicPercentage()">Calculate</button>
+            <div id="basicResult" class="result"></div>
+            <div id="basicSteps" class="steps"></div>
+            <div class="chart-container">
+                <canvas id="basicChart"></canvas>
+            </div>
+        </div>
 
-/* Dark Mode Toggle */
-.mode-toggle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        <div class="calculator-section">
+            <h2>Finding What Percentage</h2>
+            <div class="example-box">
+                Example: 80 is what percentage of 400? → Calculation: (80 ÷ 400) × 100 = 20 → Answer: 20%
+            </div>
+            <div class="input-group">
+                <input type="number" id="findingX" placeholder="X">
+                <span>is what percentage of</span>
+                <input type="number" id="findingY" placeholder="Y">
+                <span>?</span>
+            </div>
+            <button onclick="calculateWhatPercentage()">Calculate</button>
+            <div id="findingResult" class="result"></div>
+            <div id="findingSteps" class="steps"></div>
+            <div class="chart-container">
+                <canvas id="findingChart"></canvas>
+            </div>
+        </div>
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
+        <div class="calculator-section">
+            <h2>Percentage Change</h2>
+            <div class="example-box">
+                Example: From 100 to 150 → Calculation: ((150 - 100) ÷ 100) × 100 = 50 → Answer: 50% increase
+            </div>
+            <div class="input-group">
+                <span>From</span>
+                <input type="number" id="changeX" placeholder="Original">
+                <span>to</span>
+                <input type="number" id="changeY" placeholder="New">
+            </div>
+            <button onclick="calculatePercentageChange()">Calculate</button>
+            <div id="changeResult" class="result"></div>
+            <div id="changeSteps" class="steps"></div>
+            <div class="chart-container">
+                <canvas id="changeChart"></canvas>
+            </div>
+        </div>
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+        <!-- Common Applications (Accordion) -->
+        <div class="accordion">
+            <button class="accordion-button">Common Applications ▼</button>
+            <div class="accordion-content">
+                <!-- Inside the accordion-content div -->
+<div class="calculator-section">
+    <h2>Reverse Percentage</h2>
+    <div class="example-box">
+        Example: If 75 is 25% of a number → Calculation: 75 ÷ (25 ÷ 100) = 300 → Answer: 300
+    </div>
+    <div class="input-group">
+        <span>If</span>
+        <input type="number" id="reverseX" placeholder="X">
+        <span>is</span>
+        <input type="number" id="reverseY" placeholder="Y">
+        <span>% of a number, what's the original?</span>
+    </div>
+    <button onclick="calculateReversePercentage()">Calculate</button>
+    <div id="reverseResult" class="result"></div>
+    <div id="reverseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="reverseChart"></canvas>
+    </div>
+</div>
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
+<div class="calculator-section">
+    <h2>Discount Calculation</h2>
+    <div class="example-box">
+        Example: Calculate 20% discount on $80 → Calculation: $80 × (20 ÷ 100) = $16 → Answer: $16 discount
+    </div>
+    <div class="input-group">
+        <span>Calculate</span>
+        <input type="number" id="discountX" placeholder="X">
+        <span>% discount on $</span>
+        <input type="number" id="discountY" placeholder="Y">
+    </div>
+    <button onclick="calculateDiscount()">Calculate</button>
+    <div id="discountResult" class="result"></div>
+    <div id="discountSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="discountChart"></canvas>
+    </div>
+</div>
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
+<div class="calculator-section">
+    <h2>Price After Discount</h2>
+    <div class="example-box">
+        Example: What's final price after 20% discount on $80? → Calculation: $80 × (1 - 20 ÷ 100) = $64 → Answer: $64
+    </div>
+    <div class="input-group">
+        <span>What's final price after</span>
+        <input type="number" id="finalDiscountX" placeholder="X">
+        <span>% discount on $</span>
+        <input type="number" id="finalDiscountY" placeholder="Y">
+    </div>
+    <button onclick="calculateFinalPrice()">Calculate</button>
+    <div id="finalDiscountResult" class="result"></div>
+    <div id="finalDiscountSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="finalDiscountChart"></canvas>
+    </div>
+</div>
 
-input:checked + .slider {
-    background-color: #2196F3;
-}
+<div class="calculator-section">
+    <h2>Increase Calculation</h2>
+    <div class="example-box">
+        Example: Calculate 10% increase on 200 → Calculation: 200 × (10 ÷ 100) = 20 → Answer: 20 increase
+    </div>
+    <div class="input-group">
+        <span>Calculate</span>
+        <input type="number" id="increaseX" placeholder="X">
+        <span>% increase on</span>
+        <input type="number" id="increaseY" placeholder="Y">
+    </div>
+    <button onclick="calculateIncrease()">Calculate</button>
+    <div id="increaseResult" class="result"></div>
+    <div id="increaseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="increaseChart"></canvas>
+    </div>
+</div>
 
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Example Box */
-.example-box {
-    background-color: #e8f4f8;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 0.95em;
-    line-height: 1.4;
-    border-left: 4px solid #2196F3;
-}
-
-/* Calculator Sections */
-.calculator-section {
-    margin-bottom: 30px;
-    padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.input-group label {
-    min-width: 120px;
-    font-size: 16px;
-    color: #333;
-}
-
-input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 180px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-    height: 40px;
-    box-sizing: border-box;
-}
-
-input:focus {
-    outline: none;
-    border-color: #2196F3;
-}
-
-button {
-    background-color: #2196F3;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: auto;
-    min-width: 120px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    height: 40px;
-}
-
-button:hover {
-    background-color: #1976D2;
-}
-
-/* Results and Steps */
-.result, .steps {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.steps {
-    text-align: left;
-    font-size: 0.9em;
-    line-height: 1.6;
-}
-
-/* Chart Container */
-.chart-container {
-    margin-top: 20px;
-    max-width: 200px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Accordion */
-.accordion-button {
-    background-color: #2c3e50;
-    margin-bottom: 0;
-}
-
-.accordion-content {
-    display: none;
-}
-
-.accordion-content.active {
-    display: block;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #fff;
-}
-
-body.dark-mode h1 {
-    color: #fff !important;
-}
-
-body.dark-mode .calculator-container {
-    background-color: #2d2d2d;
-    box-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-body.dark-mode .calculator-section {
-    background-color: #3d3d3d;
-    border-color: #4d4d4d;
-}
-
-body.dark-mode input {
-    background-color: #4d4d4d;
-    color: #fff;
-    border-color: #5d5d5d;
-}
-
-body.dark-mode .example-box {
-    background-color: #2c3e50;
-    border-left-color: #3498db;
-}
-
-body.dark-mode .result,
-body.dark-mode .steps {
-    background-color: #4d4d4d;
-    color: #fff;
-}
-
-body.dark-mode .controls {
-    background-color: #3d3d3d;
-}
-
-body.dark-mode button {
-    background-color: #3498db;
-}
-
-body.dark-mode button:hover {
-    background-color: #2980b9;
-}
-
-body.dark-mode .accordion-button {
-    background-color: #34495e;
-}
-
-body.dark-mode .chart-container canvas {
-    background-color: #2d2d2d;
-}
-
-/* Mobile Responsive */
-@media (max-width: 600px) {
-    .calculator-container {
-        padding: 15px;
-    }
-
-    .controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .input-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    input {
-        width: 100%;
-        height: 40px;
-    }
-
-    .input-group label {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    .example-box {
-        font-size: 0.9em;
-        padding: 12px;
-    }
-
-    .chart-container {
-        max-width: 100%;
-    }
-}
+<div class="calculator-section">
+    <h2>Amount After Increase</h2>
+    <div class="example-box">
+        Example: What's the new amount after 10% increase on 200? → Calculation: 200 × (1 + 10 ÷ 100) = 220 → Answer: 220
+    </div>
+    <div class="input-group">
+        <span>What's the new amount after</span>
+        <input type="number" id="finalIncreaseX" placeholder="X">
+        <span>% increase on</span>
+        <input type="number" id="finalIncreaseY" placeholder="Y">
+    </div>
+    <button onclick="calculateFinalIncrease()">Calculate</button>
+    <div id="finalIncreaseResult" class="result"></div>
+    <div id="finalIncreaseSteps" class="steps"></div>
+    <div class="chart-container">
+        <canvas id="finalIncreaseChart"></canvas>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
